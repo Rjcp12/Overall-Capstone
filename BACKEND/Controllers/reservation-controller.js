@@ -7,7 +7,7 @@ const reservation = require('../models/reservation');
 const getReservation = async (req, res) => {
   let users;
   try {
-    users = await reservation.find({}, '-password'); // this will find all the users in the database
+    users = await reservation.find({}, '-username'); // this will find all the users in the database
   } catch (err) {
     return next(new HttpError('Fetching users failed, please try again later.', 500));
   }
@@ -25,19 +25,24 @@ const booking = async (req, res, next) => {
 
   const { fullname, number, email,request ,startdate ,enddate } = req.body;
 
-  let existingReservation;
+  let existingReservations;
   try {
-    existingReservation = await reservation.findOne({ startdate: startdate, enddate: enddate });
+    existingReservations = await reservation.find({
+      $or: [
+        { startdate: { $lte: enddate }, enddate: { $gte: startdate } },
+        { startdate: { $gte: startdate, $lte: enddate } },
+      ],
+    });
   } catch (err) {
     const error = new HttpError('Booking failed, please try again later.', 500);
     return next(error);
   }
-
-  if (existingReservation) {
-    const error = new HttpError('A reservation with the same start date and end date already exists.', 422);
+  
+  if (existingReservations.length > 0) {
+    const error = new HttpError('A reservation with overlapping dates already exists.', 422);
     return next(error);
   }
-
+  
   const reserveUser = new reservation({
     fullname,
     number,
