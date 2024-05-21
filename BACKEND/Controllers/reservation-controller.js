@@ -23,7 +23,7 @@ const booking = async (req, res, next) => {
     return next(new HttpError('Invalid inputs passed, please check your data.', 422));
   }
 
-  const { fullname, number, email,request ,startdate ,enddate } = req.body;
+  const { fullname, number, email,request ,startdate ,enddate, resort } = req.body;
 
   let existingReservations;
   try {
@@ -45,6 +45,7 @@ const booking = async (req, res, next) => {
   
   const reserveUser = new reservation({
     fullname,
+    resort,
     number,
     email,
     request,
@@ -63,5 +64,31 @@ const booking = async (req, res, next) => {
   res.status(201).json({ reservations: reserveUser.toObject({ getters: true }) });
 }
 
+const deleteReservation = async (req, res, next) => {
+  const reservationId = req.params.rid;
 
-module.exports = { getReservation, booking };
+  let reservation;
+  try {
+    reservation = await reservation.findById(reservationId);
+  } catch (err) {
+    const error = new HttpError('Something went wrong, could not delete reservation.', 500);
+    return next(error);
+  }
+
+  if (!reservation) {
+    const error = new HttpError('Could not find reservation for this id.', 404);
+    return next(error);
+  }
+
+  try {
+    await reservation.remove();
+  } catch (err) {
+    const error = new HttpError('Something went wrong, could not delete reservation.', 500);
+    return next(error);
+  }
+
+  res.status(200).json({ message: 'Deleted reservation.' });
+}
+
+
+module.exports = { getReservation, booking, deleteReservation };

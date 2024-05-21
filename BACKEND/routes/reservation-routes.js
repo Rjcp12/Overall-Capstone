@@ -10,6 +10,7 @@ router.post(
   '/booking', 
   [
     check('fullname').not().isEmpty(),
+    check('resort').not().isEmpty(),
     check('number').not().isEmpty(),
     check('email').normalizeEmail().isEmail(),
     check('request').optional(),
@@ -18,6 +19,8 @@ router.post(
   ],
   reservationController.booking
 );
+
+router.delete('/:rid', reservationController.deleteReservation);
 
 
 module.exports = router;

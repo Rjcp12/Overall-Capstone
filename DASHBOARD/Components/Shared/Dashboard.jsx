@@ -1,7 +1,5 @@
 import React from 'react'
-
-import Graph from '../dashboard/Graph.jsx';
-import Header from '../Header/Header.jsx';
+import Graph from '../dashboard/compute.jsx';
 
 
 function Dashboard() {
