@@ -137,7 +137,7 @@ function Form() {
               </button>
               <hr className="my-4" />
               <small className="text-body-secondary">
-                By clicking Log in, you agree to the terms of use.
+                By clicking Sign in, you agree to the terms of use.
               </small>
             </form>
           </div>

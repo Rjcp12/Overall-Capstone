@@ -12,7 +12,7 @@ function Login() {
   return (
     <>
       <Button variant="primary" onClick={handleShow} >
-        Login
+        Sign in
       </Button>
 
       <Modal
@@ -23,7 +23,7 @@ function Login() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
+          <Modal.Title>Sign in</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form />
