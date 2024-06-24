@@ -23,7 +23,7 @@ function BasicExample() {
         setValidated(true); 
         setLoading(true); 
 
-        const response = await fetch("http://localhost:5173/api/ownerauth/signup", {
+        const response = await fetch("http://localhost:5000/api/ownerauth/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
