@@ -16,7 +16,12 @@ function FormExample() {
     resortaddress: yup.string().required(),
     number: yup.number().required(),
     zip: yup.number().required(),
-    file: yup.mixed().required(),
+    buspermit: yup.mixed().required(),
+    fsc: yup.mixed().required(),
+    esc: yup.mixed().required(),
+    buildingpermit: yup.mixed().required(),
+    sanicert: yup.mixed().required(),
+    bir: yup.mixed().required(),
     terms: yup.bool().required().oneOf([true], 'terms must be accepted'),
   });
 
@@ -31,7 +36,12 @@ function FormExample() {
         resortaddress: '',
         nnumber: '',
         zip: '',
-        file: null,
+        buspermit: null,
+        fsc: null,
+        esc: null,
+        buildingpermit: null,
+        sanicert: null,
+        bir: null,
         terms: false,
       }}
     >
@@ -164,19 +174,91 @@ function FormExample() {
               {errors.file}
             </Form.Control.Feedback>
           </Form.Group>
+
           <Form.Group className="position-relative mb-3">
             <Form.Label>BUSINESS PERMIT</Form.Label>
             <Form.Control
               type="file"
               required
-              name="file"
+              name="buspermit"
               onChange={handleChange}
               isInvalid={!!errors.file}
             />
             <Form.Control.Feedback type="invalid" tooltip>
-              {errors.file}
+              {errors.businesspermit}
             </Form.Control.Feedback>
           </Form.Group>
+
+          <Form.Group className="position-relative mb-3">
+            <Form.Label>Fire Safety Certificates</Form.Label>
+            <Form.Control
+              type="file"
+              required
+              name="fsc"
+              onChange={handleChange}
+              isInvalid={!!errors.file}
+            />
+            <Form.Control.Feedback type="invalid" tooltip>
+              {errors.fsc}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group className="position-relative mb-3">
+            <Form.Label>Environmental Safety Certificates</Form.Label>
+            <Form.Control
+              type="file"
+              required
+              name="esc"
+              onChange={handleChange}
+              isInvalid={!!errors.esc}
+            />
+            <Form.Control.Feedback type="invalid" tooltip>
+              {errors.esc}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group className="position-relative mb-3">
+            <Form.Label>Building PERMIT</Form.Label>
+            <Form.Control
+              type="file"
+              required
+              name="buildingpermit"
+              onChange={handleChange}
+              isInvalid={!!errors.buildingpermit}
+            />
+            <Form.Control.Feedback type="invalid" tooltip>
+              {errors.buildingpermit}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group className="position-relative mb-3">
+            <Form.Label>Sanitation PERMIT</Form.Label>
+            <Form.Control
+              type="file"
+              required
+              name="sanicert"
+              onChange={handleChange}
+              isInvalid={!!errors.sanicert}
+            />
+            <Form.Control.Feedback type="invalid" tooltip>
+              {errors.sanicert}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group className="position-relative mb-3">
+            <Form.Label>BIR</Form.Label>
+            <Form.Control
+              type="file"
+              required
+              name="bir"
+              onChange={handleChange}
+              isInvalid={!!errors.bir}
+            />
+            <Form.Control.Feedback type="invalid" tooltip>
+              {errors.bir}
+            </Form.Control.Feedback>
+          </Form.Group>
+
           <Form.Group className="position-relative mb-3">
             <Form.Check
               required

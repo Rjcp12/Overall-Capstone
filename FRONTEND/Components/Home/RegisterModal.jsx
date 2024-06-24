@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from './Form';
 
-function Example(props) {
+function Example() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -17,7 +17,7 @@ function Example(props) {
 
       <Modal show={show} onHide={handleClose} size='xl'>
         <Modal.Header closeButton>
-          <Modal.Title>Registration </Modal.Title>
+          <Modal.Title>Resort Registration </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form />

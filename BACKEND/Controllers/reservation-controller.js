@@ -25,9 +25,11 @@ const booking = async (req, res, next) => {
 
   const { fullname, number, email,request ,startdate ,enddate, resort } = req.body;
 
+
   let existingReservations;
   try {
     existingReservations = await reservation.find({
+      resort: resort,
       $or: [
         { startdate: { $lte: enddate }, enddate: { $gte: startdate } },
         { startdate: { $gte: startdate, $lte: enddate } },
@@ -50,7 +52,7 @@ const booking = async (req, res, next) => {
     email,
     request,
     startdate,
-    enddate
+    enddate,
   });
 
   try {

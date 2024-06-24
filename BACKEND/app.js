@@ -9,7 +9,7 @@ const ownerroutes = require('./routes/Owner-routes');
 const userSignuproutes = require('./routes/users-signup-routes');
 const reservation = require('./routes/reservation-routes');  
 const superAdminroutes = require('./routes/superadmin-routes');
-
+const ownerSignup = require('./routes/Owner-signup-routes');
 
 const app = express();
 app.use(cors());
@@ -27,6 +27,7 @@ app.use('/api/owner',ownerroutes);
 app.use('/api/userauth',userSignuproutes);
 app.use('/api/reservation',reservation);
 app.use('/api/superadmin',superAdminroutes);
+app.use('/api/ownerauth',ownerSignup);
 
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route.', 404);
