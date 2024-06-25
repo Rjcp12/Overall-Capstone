@@ -13,7 +13,7 @@ function BasicExample() {
   const auth = useContext(AuthContext);
   
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+    <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark" fixed='top'>
       <Container>
         <Navbar.Brand href="#home">ResortHub</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -26,15 +26,16 @@ function BasicExample() {
               <Modal />
             )}
 
-            {!auth.isLoggedIn && ( 
-              <Signup />
+            {!auth.isLoggedIn && (   
+              <Signup />       
             )}
+
             {!auth.isLoggedIn && ( 
               <Login />
             )}
 
             {auth.isLoggedIn && (
-              <Button variant="primary" onClick={auth.logout}>
+              <Button variant="danger" onClick={auth.logout} className='mx-3'>
                 Log out
               </Button>
             )}

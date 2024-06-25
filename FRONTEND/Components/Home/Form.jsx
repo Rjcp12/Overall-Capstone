@@ -34,7 +34,7 @@ function FormExample() {
         lastName: '',
         username: '',
         resortaddress: '',
-        nnumber: '',
+        number: '',
         zip: '',
         buspermit: null,
         fsc: null,

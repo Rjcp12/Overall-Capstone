@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ErrorToast(props) {
   return (
-    <div className="toast-container position-fixed end-0 p-3" style={{ zIndex: 1050, top: '50px' }}>
+    <div className="toast-container position-fixed end-0 p-3" style={{ zIndex: 1050, bottom: '50px' }}>
       <Toast
         bg="danger"
         onClose={props.onClear}

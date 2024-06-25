@@ -11,7 +11,11 @@ const placeSchema = new Schema({
   zipcode: {type: Number, required: true},
   validId: {type: String, required: true},
   businesspermit: {type: String, required: true},
-
+  fsc: {type: String, required: true},
+  esc: {type: String, required: true},
+  buildingpermit: {type: String, required: true},
+  sanicert: {type: String, required: true},
+  bir: {type: String, required: true},
 });
 
 placeSchema.plugin(uniqueValidator);

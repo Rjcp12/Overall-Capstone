@@ -11,7 +11,7 @@ function Example() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} >
+      <Button variant="primary" onClick={handleShow} className='mx-3 mb-sm-3 mb-lg-0' >
         Register Now
       </Button>
 
